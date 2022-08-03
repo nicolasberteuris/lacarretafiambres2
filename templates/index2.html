@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block titulo %}La carreta{% endblock titulo %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'css/assets/favicon.ico' %}" />
+        
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/stylenico.css' %}" rel="stylesheet" type="text/css">
+        {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/> 
+        <link href="{% static 'css/dataTables.bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/stylenico.css' %}" rel="stylesheet" type="text/css">
+        {% endblock extra_css %}
+    </head>
+
+    <body>
+        <div id="contenedornicostyle">
+            <div id="headernicostyle">Header</div>
+            <div id="navvnicostyle">navv</div>
+            <div id="contenidonicostyle">
+                <div id="sectionnicostyle"></div>
+                <div id="asidenicostyle"></div>
+                    {% block aside %}
+                    {% endblock aside %}
+                <div id="footernicostyle">navv</div>
+
+        </div>
+    </body>

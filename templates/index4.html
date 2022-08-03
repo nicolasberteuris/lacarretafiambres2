@@ -1,0 +1,21 @@
+<header class="v-header header">
+    <div class="container clearfix nopadding">
+        <div id="logo" class="text-white"><a href="{% url 'index'%}"></a>La Carreta</div>
+        <div class="menu-button  m-menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav a-nav clearfix">
+                <ul >
+                    <li class="active" ><a class="scroll-to-link" href="#Inicio">Inicio</a></li>
+                    <li   ><a class="scroll-to-link" href="#about">Nosotros</a></li>
+                    <li   ><a class="scroll-to-link" href="#services" >Productos</a></li>
+                    <li  ><a class="scroll-to-link" href="#contact" >Contacto</a></li>
+                    <li  ><a class="scroll-to-link" href="{% url 'login'%}" >Login</a></li>
+                    <li class="text-white nav-item"><a class="text-white nav-link active" aria-current="page" href="{% url 'fiambres:listado_productos' %}">Tienda</a></li>
+                    <li class="text-white nav-item"><a class="text-white nav-link active" aria-current="page" type="button" onclick="abrir_modal_REGISTRARSE('{% url 'usuarios:registrar_usuarios' %}')">Registrarme</a></li>
+                </ul>
+        </nav>
+    </div>
+</header>

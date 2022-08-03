@@ -1,0 +1,44 @@
+{% extends 'fiambres/listado_productos.html' %}
+{% block titulo %}
+    Listado de Productos
+{% endblock titulo %}
+{% block barradebusqueda %} 
+<br>
+<br>
+<br>
+{% endblock barradebusqueda %} 
+{% block categorias %}
+{% endblock categorias %}
+{% block barra %}
+<div class="container">
+    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="get">
+          {% csrf_token %}
+              <div id ="custom-search-input">
+              <div class="input-group">
+                  <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar.." name="buscar" value="">
+                  <div class="input-group-append">
+                      <button class="btn btn-primary-dark" type="submit">
+                      <i class="fas fa-search fa-sm"></i>
+                      </button>
+                 <div>
+              </div>
+              </div>
+        </form>
+    </div>
+</div>
+{% endblock barra %}
+
+{% block body %}
+
+&nbsp
+<div class="container" style="justify-items: center;">
+                {% for factura in factura_id %}
+                <div style="justify-items: center;">
+                    <div>
+                        <img src="{{ factura.factura.url }}" style="width: 100%;" alt="{{ orden_usuario.id }}">
+                    </div>
+                </div>
+                {% endfor %}
+<div>
+{% endblock body %}

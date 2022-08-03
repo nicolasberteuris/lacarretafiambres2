@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% block titulo %}
+    Listado de Productos
+{% endblock titulo %}
+{% block barra %}
+<div id="banner">
+    <div class="container">
+        <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form method="get">
+            {% csrf_token %}
+                <div id ="custom-search-input">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar.." name="buscar" value="">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary-dark" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    <div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock barra %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h2 class="my-4">Categorías de Producto</h2>
+            <div class="list-group">
+                {% for c in categories %}
+                <a href="{% url 'fiambres:categories' c.id %}" class="list-group-item">{{ c.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+&nbsp
+{% block aside %}
+<div class="row">
+    <div class="col-9">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3 col-sm-12 col-lg-4">
+                <div class="card" style="width: 100%">
+                    <a href="{% url 'fiambres:detail' product.slug %}"><img src="{{ product.image.url }}" style="width: 100%;" alt="{{ product.slug }}"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.excerpt }}</p>
+                        <p class="card-text">${{ product.price }}</p>
+                    </div>
+                    <div class='card-footer text-center'>
+                        <a href="{% url 'add_product' product.id %}" class="btn btn-dark">Añadir al carrito</a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock aside %}
+    <div class="col-3">
+        {% include 'fiambres/mycart.html' %}
+    </div>
+</div>
+{% endblock body %}

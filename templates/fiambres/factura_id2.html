@@ -1,0 +1,19 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Factura {{ id }}</h2>
+        </div>
+        <form action="{%url 'fiambres:factura_id' id %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-body">
+            {% for factura in factura_id %}
+                <p>{{ factura.image.url }}</p>   
+            {% endfor %}         
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'fiambres:index'%}" button class="btn btn-danger" type="button" data-dismiss = "modal">Cancelar</a></button>
+                <button class="btn btn-dark" type="submit">Confirmar</button>
+            </div>
+        </form>
+    </div>
+</div>
